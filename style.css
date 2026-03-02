@@ -1,0 +1,166 @@
+/* --- CSS VARIABLES & GLOBAL --- */
+:root {
+  --pcb-bg: #0b1e15;
+  --pcb-line: #163d28;
+  --flash-color: #ffffff;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+  background-color: var(--pcb-bg);
+}
+
+/* --- CIRCUIT BOARD INTRO SCREEN --- */
+#intro-screen {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Circuit board pattern */
+  background-image: 
+    linear-gradient(var(--pcb-line) 2px, transparent 2px),
+    linear-gradient(90deg, var(--pcb-line) 2px, transparent 2px);
+  background-size: 50px 50px;
+  z-index: 10;
+}
+
+.instructions {
+  color: #4ade80;
+  font-family: monospace;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 5px rgba(74, 222, 128, 0.5);
+}
+
+/* Bulb Styling */
+#bulb {
+  font-size: 4rem;
+  margin-bottom: 40px;
+  filter: grayscale(100%) opacity(0.3);
+  transition: all 0.5s ease;
+}
+
+#bulb.glowing {
+  filter: grayscale(0%) opacity(1);
+  text-shadow: 0 0 40px #fcd34d, 0 0 80px #fcd34d;
+  transform: scale(1.2);
+}
+
+/* Wires & Nodes Area */
+#puzzle-container {
+  position: relative;
+  width: 600px;
+  height: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px solid var(--pcb-line);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+/* SVG Canvas for drawing wires */
+#wire-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Lets clicks pass through to nodes */
+}
+
+.node-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  z-index: 2;
+}
+
+.node {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #222;
+  border: 4px solid;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.8) inset;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.node:hover {
+  transform: scale(1.1);
+}
+
+.node.selected {
+  box-shadow: 0 0 15px currentColor;
+}
+
+.node.connected {
+  pointer-events: none;
+  background: currentColor;
+}
+
+/* --- TRANSITION FLASH --- */
+#flash-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--flash-color);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- PORTFOLIO SCREEN --- */
+#portfolio-screen {
+  display: none;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fafafa;
+  color: #333;
+  padding: 50px;
+  box-sizing: border-box;
+  z-index: 20;
+}
+
+.portfolio-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.portfolio-header h1 {
+  font-size: 3rem;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.project-card {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border-top: 4px solid #4ade80;
+}

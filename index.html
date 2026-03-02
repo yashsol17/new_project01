@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engineer Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="intro-screen">
+    <div id="bulb">💡</div>
+    <div class="instructions" id="instruction-text">System offline. Connect matching wires.</div>
+    
+    <div id="puzzle-container">
+      <svg id="wire-canvas"></svg>
+      
+      <div class="node-column" id="left-nodes">
+        <div class="node" data-color="#ef4444" style="border-color: #ef4444; color: #ef4444;"></div>
+        <div class="node" data-color="#3b82f6" style="border-color: #3b82f6; color: #3b82f6;"></div>
+        <div class="node" data-color="#4ade80" style="border-color: #4ade80; color: #4ade80;"></div>
+      </div>
+
+      <div class="node-column" id="right-nodes">
+        <div class="node" data-color="#4ade80" style="border-color: #4ade80; color: #4ade80;"></div>
+        <div class="node" data-color="#ef4444" style="border-color: #ef4444; color: #ef4444;"></div>
+        <div class="node" data-color="#3b82f6" style="border-color: #3b82f6; color: #3b82f6;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="flash-overlay"></div>
+
+  <div id="portfolio-screen">
+    <div class="portfolio-header">
+      <h1>Yash Solanke</h1>
+      <p>Full-Stack Software Engineer & Hardware Enthusiast</p>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Project Alpha</h3>
+        <p>A high-performance microservice architecture built with Node.js and Docker.</p>
+      </div>
+      <div class="project-card">
+        <h3>IoT Circuit Controller</h3>
+        <p>Embedded C++ firmware for remotely monitoring PCB temperatures via WebSockets.</p>
+      </div>
+      <div class="project-card">
+        <h3>Data Pipeline</h3>
+        <p>Python-based ETL pipeline processing 5M+ records daily using Apache Kafka.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
